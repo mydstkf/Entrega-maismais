@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrega++ | Seu delivery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#" onclick="mostrarInicio(); return false;" aria-label="Entrega++ início">
+      <span class="logo-icon">🚚</span><span>Entrega<span class="logo-plus">++</span></span>
+    </a>
+    <nav class="nav-links">
+      <button class="nav-link" onclick="mostrarInicio()">Início</button>
+      <button class="nav-link" onclick="mostrarPedidosPagina()">Pedidos</button>
+      <button class="nav-link" onclick="mostrarCadastros()">Clientes e fornecedores</button>
+      <button class="nav-link" onclick="mostrarEntregador()">Entregador</button>
+    </nav>
+    <div class="top-actions">
+      <button class="text-button" onclick="mostrarCliente()">Criar cadastro</button>
+      <button class="primary-button small" onclick="mostrarPedidosPagina()">Acessar pedidos</button>
+    </div>
+    <button class="menu-button" onclick="alternarMenu()" aria-label="Abrir menu">☰</button>
+  </header>
+
+  <main>
+    <!-- INÍCIO -->
+    <section id="paginaInicial" class="page home-page">
+      <div class="hero">
+        <span class="eyebrow">SEU DELIVERY, MAIS ORGANIZADO</span>
+        <h1>Tudo para facilitar<br>o seu dia a dia.</h1>
+        <p>Organize clientes, fornecedores e pedidos em um só lugar.</p>
+        <div class="address-search">
+          <span class="pin">⌖</span>
+          <input id="enderecoBusca" type="text" placeholder="Digite um endereço de entrega (opcional)">
+          <button class="primary-button" onclick="usarEndereco()">Buscar</button>
+        </div>
+        <p id="mensagemEndereco" class="helper-message" aria-live="polite"></p>
+      </div>
+
+      <div class="category-grid">
+        <article class="category-card restaurant-card">
+          <div class="category-copy">
+            <span class="card-kicker">PARA COMER BEM</span>
+            <h2>Restaurante</h2>
+            <p>Cadastre e acompanhe pedidos de refeições.</p>
+            <button class="light-button" onclick="abrirPedidosCategoria('Restaurante')">Ver pedidos <span>›</span></button>
+          </div>
+          <div class="category-art" aria-hidden="true">🍔</div>
+        </article>
+        <article class="category-card market-card">
+          <div class="category-copy">
+            <span class="card-kicker">PRATICIDADE NO DIA A DIA</span>
+            <h2>Mercado</h2>
+            <p>Organize compras e entregas do mercado.</p>
+            <button class="light-button" onclick="abrirPedidosCategoria('Mercado')">Ver pedidos <span>›</span></button>
+          </div>
+          <div class="category-art" aria-hidden="true">🛒</div>
+        </article>
+      </div>
+
+
+      <!-- RESTAURANTES POPULARES -->
+      <section class="restaurants-section">
+        <div class="restaurant-heading">
+          <div>
+            <span class="eyebrow">PEÇA SEU FAVORITO</span>
+            <h2>Os melhores restaurantes</h2>
+            <p>Escolha um restaurante e comece a montar seu pedido.</p>
+          </div>
+          <button class="restaurant-see-all" onclick="abrirPedidosCategoria('Restaurante')">Ver todos →</button>
+        </div>
+
+        <div class="restaurant-list">
+          <button class="restaurant-item" onclick="abrirRestaurante('McDonald’s')">
+            <span class="restaurant-logo logo-mcd">M</span>
+            <span class="restaurant-info"><strong>McDonald’s</strong><small>Lanches • Hambúrguer</small></span>
+            <span class="restaurant-arrow">›</span>
+          </button>
+          <button class="restaurant-item" onclick="abrirRestaurante('Coco Bambu')">
+            <span class="restaurant-logo logo-coco">🥥</span>
+            <span class="restaurant-info"><strong>Coco Bambu</strong><small>Frutos do mar</small></span>
+            <span class="restaurant-arrow">›</span>
+          </button>
+          <button class="restaurant-item" onclick="abrirRestaurante('China in Box')">
+            <span class="restaurant-logo logo-china">🥡</span>
+            <span class="restaurant-info"><strong>China in Box</strong><small>Comida chinesa</small></span>
+            <span class="restaurant-arrow">›</span>
+          </button>
+          <button class="restaurant-item" onclick="abrirRestaurante('Habib’s')">
+            <span class="restaurant-logo logo-habibs">H</span>
+            <span class="restaurant-info"><strong>Habib’s</strong><small>Lanches • Esfihas</small></span>
+            <span class="restaurant-arrow">›</span>
+          </button>
+          <button class="restaurant-item" onclick="abrirRestaurante('Outback Steakhouse')">
+            <span class="restaurant-logo logo-outback">OUTBACK</span>
+            <span class="restaurant-info"><strong>Outback Steakhouse</strong><small>Comida americana</small></span>
+            <span class="restaurant-arrow">›</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- BANNERS PROMOCIONAIS -->
+      <section class="promotions-section">
+        <span class="eyebrow">OFERTAS E DESTAQUES</span>
+        <h2>Promoções para aproveitar</h2>
+        <div class="promotion-grid">
+          <article class="promotion-banner promo-lunch">
+            <div><small>OFERTA DO DIA</small><h3>Almoço<br>especial</h3><p>Uma pausa gostosa no seu dia.</p></div>
+            <span class="promo-emoji">🍛</span>
+          </article>
+          <article class="promotion-banner promo-discount">
+            <div><small>DESTAQUE</small><h3>Pratos<br>deliciosos</h3><p>Escolha seu favorito.</p></div>
+            <span class="promo-emoji">🍗</span>
+          </article>
+          <article class="promotion-banner promo-fresh">
+            <div><small>OPÇÕES LEVES</small><h3>Comida<br>fresquinha</h3><p>Mais sabor para sua rotina.</p></div>
+            <span class="promo-emoji">🥗</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="quick-actions">
+        <div>
+          <span class="eyebrow">COMECE POR AQUI</span>
+          <h2>O que você deseja fazer?</h2>
+        </div>
+        <div class="quick-grid">
+          <button class="quick-card" onclick="mostrarCliente()"><span class="quick-icon">👤</span><strong>Cadastrar cliente</strong><span>Nome, telefone e endereço</span></button>
+          <button class="quick-card" onclick="mostrarFornecedor()"><span class="quick-icon">🏪</span><strong>Cadastrar fornecedor</strong><span>Organize seus parceiros</span></button>
+          <button class="quick-card" onclick="mostrarCadastros()"><span class="quick-icon">📋</span><strong>Ver cadastros</strong><span>Consulte clientes e fornecedores</span></button>
+          <button class="quick-card" onclick="mostrarPedidosPagina()"><span class="quick-icon">📦</span><strong>Gerenciar pedidos</strong><span>Acompanhe cada etapa</span></button>
+        </div>
+      </section>
+    </section>
+
+    <!-- CLIENTE -->
+    <section id="paginaCliente" class="page form-page escondido">
+      <button class="back-button" onclick="mostrarInicio()">← Voltar ao início</button>
+      <div class="section-heading"><span class="round-icon">👤</span><div><span class="eyebrow">CADASTRO</span><h1>Novo cliente</h1><p>Preencha os dados para guardar o cadastro.</p></div></div>
+      <form onsubmit="salvarCliente(event)" class="form-card">
+        <label for="nomeCliente">Nome completo</label>
+        <input id="nomeCliente" type="text" placeholder="Ex.: Maria da Silva" required>
+        <label for="telefoneCliente">Telefone</label>
+        <input id="telefoneCliente" type="tel" placeholder="(00) 00000-0000" required>
+        <label for="enderecoCliente">Endereço</label>
+        <input id="enderecoCliente" type="text" placeholder="Rua, número, bairro" required>
+        <button class="primary-button full" type="submit">Salvar cliente</button>
+      </form>
+    </section>
+
+    <!-- FORNECEDOR -->
+    <section id="paginaFornecedor" class="page form-page escondido">
+      <button class="back-button" onclick="mostrarInicio()">← Voltar ao início</button>
+      <div class="section-heading"><span class="round-icon">🏪</span><div><span class="eyebrow">CADASTRO</span><h1>Novo fornecedor</h1><p>Guarde as informações dos seus parceiros.</p></div></div>
+      <form onsubmit="salvarFornecedor(event)" class="form-card">
+        <label for="nomeFornecedor">Nome / empresa</label>
+        <input id="nomeFornecedor" type="text" placeholder="Nome do fornecedor" required>
+        <label for="telefoneFornecedor">Telefone</label>
+        <input id="telefoneFornecedor" type="tel" placeholder="(00) 00000-0000" required>
+        <label for="enderecoFornecedor">Endereço</label>
+        <input id="enderecoFornecedor" type="text" placeholder="Rua, número, bairro" required>
+        <button class="primary-button full" type="submit">Salvar fornecedor</button>
+      </form>
+    </section>
+
+    <!-- LISTAS -->
+    <section id="paginaCadastros" class="page list-page escondido">
+      <button class="back-button" onclick="mostrarInicio()">← Voltar ao início</button>
+      <div class="section-heading"><span class="round-icon">📋</span><div><span class="eyebrow">SEUS REGISTROS</span><h1>Clientes e fornecedores</h1><p>Consulte os dados cadastrados neste navegador.</p></div></div>
+      <div class="two-columns">
+        <div class="list-panel"><div class="panel-title"><h2>👤 Clientes</h2><span id="contadorClientes" class="count-badge">0</span></div><div id="listaClientes" class="record-list"></div></div>
+        <div class="list-panel"><div class="panel-title"><h2>🏪 Fornecedores</h2><span id="contadorFornecedores" class="count-badge">0</span></div><div id="listaFornecedores" class="record-list"></div></div>
+      </div>
+    </section>
+
+    <!-- PEDIDOS -->
+    <section id="paginaPedidos" class="page orders-page escondido">
+      <button class="back-button" onclick="mostrarInicio()">← Voltar ao início</button>
+      <div class="section-heading"><span class="round-icon">📦</span><div><span class="eyebrow">CONTROLE DO DELIVERY</span><h1>Gerenciar pedidos</h1><p>Cadastre pedidos e atualize o andamento da entrega.</p></div></div>
+      <div class="summary-grid">
+        <div class="summary-card"><span>Total de pedidos</span><strong id="totalPedidos">0</strong><small>Todos os pedidos</small></div>
+        <div class="summary-card"><span>Em preparo</span><strong id="emPreparo">0</strong><small>Sendo preparados</small></div>
+        <div class="summary-card"><span>Em entrega</span><strong id="emEntrega">0</strong><small>A caminho</small></div>
+        <div class="summary-card"><span>Entregues</span><strong id="entregues">0</strong><small>Finalizados</small></div>
+      </div>
+
+      <div class="order-layout">
+        <form class="form-card order-form" onsubmit="salvarPedido(event)">
+          <h2>➕ Novo pedido</h2>
+          <label for="cliente">Cliente</label>
+          <select id="cliente" required><option value="">Selecione um cliente</option></select>
+          <p id="avisoSemCliente" class="inline-note escondido">Cadastre um cliente antes de criar um pedido.</p>
+          <label for="categoriaPedido">Tipo de pedido</label>
+          <select id="categoriaPedido"><option>Restaurante</option><option>Mercado</option><option>Outro</option></select>
+          <label for="pedido">Descrição do pedido</label>
+          <input id="pedido" type="text" placeholder="Ex.: 2 sanduíches e 1 suco" required>
+          <label for="enderecoPedido">Endereço de entrega</label>
+          <input id="enderecoPedido" type="text" placeholder="Endereço para esta entrega">
+          <label for="valorPedido">Valor (R$) — opcional</label>
+          <input id="valorPedido" type="number" min="0" step="0.01" placeholder="Ex.: 35,90">
+          <label for="status">Status</label>
+          <select id="status"><option>Recebido</option><option>Em preparo</option><option>Saiu para entrega</option><option>Entregue</option></select>
+          <button class="primary-button full" type="submit">Salvar pedido</button>
+        </form>
+        <div class="orders-list-panel">
+          <div class="orders-title"><div><span class="eyebrow">ACOMPANHAMENTO</span><h2>Pedidos cadastrados</h2></div><span id="contadorPedidos" class="count-badge">0</span></div>
+          <input id="pesquisa" class="search-input" type="search" placeholder="Buscar por cliente ou pedido..." oninput="mostrarPedidos()">
+          <div id="listaPedidos" class="record-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTAL DO ENTREGADOR -->
+    <section id="paginaEntregador" class="page entregador-page escondido">
+      <section class="entregador-hero">
+        <div class="entregador-hero-copy">
+          <span class="eyebrow">PORTAL DO ENTREGADOR</span>
+          <h1>Faça suas entregas<br>com o Entrega++</h1>
+          <p>Conheça nosso espaço para entregadores e veja as informações para começar.</p>
+          <button class="entregador-cta" onclick="mostrarToast('Esta é uma demonstração do portal de entregadores.')">› Saiba mais</button>
+        </div>
+        <div class="entregador-hero-art" aria-hidden="true">🛵<span>📦</span></div>
+      </section>
+
+      <section class="entregador-beneficios">
+        <span class="eyebrow">VANTAGENS</span>
+        <h2>Quem entrega com o Entrega++ tem vantagens</h2>
+        <div class="benefit-grid">
+          <article class="benefit-card"><div class="benefit-icon">📚</div><h3>Educação</h3><p>Conteúdos e dicas para organizar melhor suas entregas e desenvolver novas habilidades.</p></article>
+          <article class="benefit-card"><div class="benefit-icon">💰</div><h3>Economia no dia a dia</h3><p>Informações sobre economia, planejamento e cuidados com os gastos do trabalho.</p></article>
+          <article class="benefit-card"><div class="benefit-icon">🧰</div><h3>Equipamentos</h3><p>Dicas sobre itens de segurança e acessórios úteis para a rotina de entregas.</p></article>
+        </div>
+      </section>
+
+      <section class="vehicle-section">
+        <span class="eyebrow">MODALIDADES</span>
+        <h2>Escolha se quer entregar de bike, moto ou carro!</h2>
+        <p class="vehicle-subtitle">Veja alguns requisitos gerais para cada modalidade:</p>
+        <div class="vehicle-grid">
+          <article class="vehicle-card"><div class="vehicle-icon">🚲</div><h3>Bike</h3><ul><li>Verifique as regras locais e do serviço</li><li>Use equipamentos de segurança</li><li>Tenha bicicleta em boas condições</li></ul></article>
+          <article class="vehicle-card"><div class="vehicle-icon">🛵</div><h3>Moto</h3><ul><li>18 anos ou mais</li><li>Documento de identificação</li><li>CNH e documentação exigidas por lei</li></ul></article>
+          <article class="vehicle-card"><div class="vehicle-icon">🚗</div><h3>Carro</h3><ul><li>18 anos ou mais</li><li>Documento de identificação</li><li>CNH e documentação exigidas por lei</li></ul></article>
+        </div>
+        <p class="legal-note">Área demonstrativa para o projeto escolar. Requisitos reais dependem das leis e regras do serviço de entrega.</p>
+        <button class="primary-button" onclick="mostrarInicio()">Voltar ao Entrega++</button>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer"><span>🚚 <strong>Entrega++</strong></span><span>Organização simples para o seu delivery.</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
